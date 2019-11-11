@@ -93,6 +93,15 @@ class AdditionalUpdatesOptimizer(optimizers.Optimizer):
         self.updates = updates
         return self.updates
 
+    def _create_slots(self, var_list):
+        self.optimizer._create_slots(var_list)
+
+    def _resource_apply_dense(self, grad, var, **apply_kwargs):
+        self.optimizer._resource_apply_dense(grad, var, **apply_kwargs)
+
+    def _resource_apply_sparse(self, grad, handle, indices, apply_state):
+        self.optimizer._resource_apply_sparse(grad, handle, indices, apply_state)
+
     def get_config(self):
         return self.optimizer.get_config()
 

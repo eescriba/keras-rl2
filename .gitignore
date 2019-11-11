@@ -8,3 +8,9 @@ examples/intro-to-rl.ipynb
 examples/checkpoint
 *.ipynb
 *.pyc
+build
+env
+dist
+*.vscode
+keras_rl2.egg-info
+checkpoint
