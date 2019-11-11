@@ -30,8 +30,6 @@
   </tr>
 </table>
 
-### NOTE: Requires tensorflow==2.0.0-b1.
-
 
 ## What is it?
 

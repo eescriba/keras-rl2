@@ -104,7 +104,7 @@ class DQNAgent(AbstractDQNAgent):
         super(DQNAgent, self).__init__(*args, **kwargs)
 
         # Validate (important) input.
-        if hasattr(model.output, '__len__') and len(model.output) > 1:
+        if hasattr(model.output, '__len__') and model.output.shape[-1] > 1:
             raise ValueError('Model "{}" has more than one output. DQN expects a model that has a single output.'.format(model))
         if list(model.output.shape) != list((None, self.nb_actions)):
             raise ValueError('Model output "{}" has invalid shape. DQN expects a model that has one dimension for each action, in this case {}.'.format(model.output, self.nb_actions))
@@ -382,7 +382,7 @@ class NAFLayer(Layer):
     def call(self, x, mask=None):
         # TODO: validate input shape
 
-        assert (len(x) == 3)
+        assert (x.shape == 3)
         L_flat = x[0]
         mu = x[1]
         a = x[2]
